@@ -1,235 +1,858 @@
+
 <!DOCTYPE html>
-<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Wixy Beats</title>
-	<style type="text/css">
-		#main-header{
-			font-size: 50px;
-			font-family: cursive;
-			color: white;
-			background-color: green;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clockwise Risk Assessment Pty Ltd | Industrial Services & Safety Solutions</title>
+    <meta name="description" content="Clockwise Risk Assessment Pty Ltd - Over 15 years of excellence in refrigeration, safety systems, environmental rehabilitation, and comprehensive risk assessment services in Boksburg.">
+    <meta name="keywords" content="risk assessment, refrigeration services, aircon repair, occupational health safety, Scania engine repair, environmental rehabilitation, Boksburg">
+    <meta name="author" content="Clockwise Risk Assessment Pty Ltd">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Clockwise Risk Assessment Pty Ltd">
+    <meta property="og:description" content="Over 15 years of excellence in industrial services and comprehensive risk assessment">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏰</text></svg>">
+    
+    <style>
+        /* Base Styles and Variables */
+        :root {
+            --primary-white: #ffffff;
+            --light-brown: #d7ccc8;
+            --dark-brown: #8d6e63;
+            --accent-color: #a1887f;
+            --text-dark: #333333;
+            --text-light: #f5f5f5;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-		}
-		#vidz{
-			marging-right: 20px;
-		}
-		#main-body{
-			align-items: center;
-			color: blue;
-			text-align: center;
-		}
-		#audio{
-				margin-right: 20px;
-				color: white;
-			    background-color: blue;
-			    padding: 10px;
-		
-		}
-		#music{
-				margin-right: 200px;
-				color: white;
-			    background-color: blue;
-			    padding: 10px;
-		}
-		#celeb{
-			margin-right: 20px;
-			color: white;
-			background-color: blue;
-			padding: 10px;
-		}
-		#audio:hover{
-			color: green;
-			background-color: red;
-			cursor: pointer;
-			opacity: 0.6;
-			transition: 0.15s;
-		}
-		#music:hover{
-			color: green;
-			background-color: red;
-			cursor: pointer;
-			opacity: 0.6;
-			transition: 0.15s;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-		}
-		#celeb:hover{
+        body {
+            background-color: var(--primary-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
 
-			color: green;
-			background-color: red;
-			cursor: pointer;
-			opacity: 0.6;
-			transition: 0.15s;
-		}
-		#in{
-			height: 30px;
-			border-radius: 2px;
-		}
-		#search{
-			width: 20px;
-		}
-		
-		#file::-webkit-file-upload-button
-		visibility: hidden;
+        /* Header and Navigation */
+        header {
+            background-color: var(--primary-white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
 
-		}
-		#file , input[type=button] , #color{
-			width: 40px;
-			height: 30px;
-			float: left;
-			margin left: 10px;
-		}
-		
-			
-		}
-	</style>
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-placeholder {
+            width: 180px;
+            height: 60px;
+            background-color: var(--light-brown);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--dark-brown);
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--dark-brown);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--dark-brown);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-brown);
+        }
+
+        /* Hero Section with Sliding Images */
+        .hero {
+            margin-top: 90px;
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .slideshow-container {
+            position: relative;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            text-align: center;
+            color: var(--primary-white);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 0 20px;
+        }
+
+        .slide-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--dark-brown);
+            color: var(--primary-white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .slide-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .slide-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .slide-dot.active {
+            background-color: var(--primary-white);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 5%;
+            background-color: var(--light-brown);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark-brown);
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--dark-brown);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-brown);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            flex: 1;
+            height: 400px;
+            background-color: var(--primary-white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-brown);
+            font-weight: bold;
+            font-size: 1.2rem;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 5%;
+            background-color: var(--primary-white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--light-brown);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--dark-brown);
+        }
+
+        .service-image {
+            height: 200px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .service-card p {
+            color: var(--text-dark);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 5%;
+            background-color: var(--light-brown);
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-brown);
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-details p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--dark-brown);
+            color: var(--primary-white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .map-container {
+            flex: 1;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Animation Characters */
+        .animation-area {
+            position: relative;
+            height: 300px;
+            background-color: var(--light-brown);
+            overflow: hidden;
+        }
+
+        .character {
+            position: absolute;
+            bottom: 0;
+            width: 80px;
+            height: 120px;
+            background-color: var(--dark-brown);
+            border-radius: 40px 40px 0 0;
+            animation: moveCharacter 20s linear infinite;
+        }
+
+        .character::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--dark-brown);
+            border-radius: 50%;
+        }
+
+        .character:nth-child(2) {
+            animation-delay: -5s;
+            background-color: var(--accent-color);
+        }
+
+        .character:nth-child(2)::before {
+            background-color: var(--accent-color);
+        }
+
+        .character:nth-child(3) {
+            animation-delay: -10s;
+            background-color: #8d6e63;
+        }
+
+        .character:nth-child(3)::before {
+            background-color: #8d6e63;
+        }
+
+        @keyframes moveCharacter {
+            0% {
+                left: -100px;
+            }
+            100% {
+                left: calc(100% + 100px);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-brown);
+            color: var(--text-light);
+            padding: 50px 5% 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--light-brown);
+            bottom: -8px;
+            left: 0;
+        }
+
+        .footer-column p, .footer-column a {
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--light-brown);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content, .contact-container {
+                flex-direction: column;
+            }
+            
+            .about-image, .map-container {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 90px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-white);
+                box-shadow: var(--shadow);
+                padding: 20px;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .slide-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                height: 500px;
+            }
+            
+            .slide-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .slide-content p {
+                font-size: 1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-<body id="main-body">
-	<div class="fit-screen">
-	<h1 id="main-header">Wixy Beats</h1><br>
-	<br>
-	<br>
-		<div class="container">
-		<form action="http://www.google.com/search" method="get" class="search-bar">
-	<input type="" name="q" placeholder="search">
-	<button type="submit"><img id="search" src="images/search.png"></button>
-	</form>
-	</div>
-	<br>
- <a href='https://www.free-counters.org/'>Get free Counters</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=419dc3ed33202e6675ab7402ff9e9237f5443333'></script>
-<script type="text/javascript" src="https://freevisitorcounters.com/en/home/counter/1061858/t/2"></script>
-	<br>
-	<br>
-	<body>
-	
-		<form action="demo.php"method="post" enctype="multipart.form-data">
-		Select a File to Upload
-		<br>
-		<input type="file" name="fuResume" id="fuResume">
-		<input type="submit" value="Upload File">
-	</form>
-		<br>
-		<p>Upload Your Music Videos.</p>
-		<br>
-		<br>
-			
-	Our own local music platform, if you want to upload your music videos, audios or dramas, get in touch with me and send me the video<br>
-	or audio with title and singer. Videos must be of the right quality. Whatsapp number is on contact page.<br>
-		
-			
-			
-			
-		
-	
-		<br>
-		<br>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <div class="logo-placeholder">Company Logo</div>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-	<strong id="music">Music Videos</strong>
-		
-	<a id="audio" href="details.html">Audio Mp3</a>
-	<a id="celeb" href="blog.html">Movie shorts</a>  
-	<br>
-	<br>
-	<video width="800"  controls>
-		<source  src="video/b.mp4" type="video/mp4">
+    <!-- Hero Section with Sliding Images -->
+    <section class="hero" id="home">
+        <div class="slideshow-container">
+            <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')">
+                <div class="slide-content">
+                    <h1>Clockwise Risk Assessment Pty Ltd</h1>
+                    <p>Over 15 years of excellence in comprehensive risk management and industrial services</p>
+                    <a href="#services" class="btn">Our Services</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1609356718186-53b2ce7d64c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')">
+                <div class="slide-content">
+                    <h1>Expert Refrigeration & Aircon Services</h1>
+                    <p>Professional installation, maintenance, and repair services for all your cooling needs</p>
+                    <a href="#services" class="btn">Learn More</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1545152420-d7c3dbb0c8c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')">
+                <div class="slide-content">
+                    <h1>Comprehensive Risk Assessment</h1>
+                    <p>Protecting your business with thorough safety evaluations and management systems</p>
+                    <a href="#services" class="btn">Our Approach</a>
+                </div>
+            </div>
+            <div class="slide-nav">
+                <div class="slide-dot active"></div>
+                <div class="slide-dot"></div>
+                <div class="slide-dot"></div>
+            </div>
+        </div>
+    </section>
 
+    <!-- About Us Section -->
+    <section class="about" id="about">
+        <div class="section-container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Your Trusted Partner for Over 15 Years</h3>
+                    <p>Clockwise Risk Assessment Pty Ltd, based in Boksburg, has been a leader in industrial services and risk management for more than 15 years. Our commitment to excellence and safety has made us the preferred choice for businesses across various sectors.</p>
+                    <p>We combine technical expertise with comprehensive risk assessment methodologies to deliver solutions that not only meet but exceed our clients' expectations. Our team of certified professionals is dedicated to ensuring the highest standards of quality and safety in every project we undertake.</p>
+                    <p>From refrigeration systems to environmental rehabilitation, we offer a diverse range of services tailored to your specific needs, backed by our extensive experience and industry knowledge.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Clockwise Risk Assessment Team">
+                </div>
+            </div>
+        </div>
+    </section>
 
-		
-	</video><br>
-	Singer: Sir Bethel Gurure   Song: Its Inside "Intro" This young man is a genius.
-	<br>
-	<br>
-		<video width="800" height="500" controls>
-			<source src="video/ExQ - Bhachura (Official Video) ft. Ammara Brown.mp4" type="video/mp4">
-		</video>
-	<br>
-		Bhachura by Ex Q and Amara Brown -  Classic
-	<br>	
-	<br>
-	<video width="800" height="500" controls>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1609356718186-53b2ce7d64c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <h3>Refrigeration, Aircon & Ventilation</h3>
+                    <p>Professional installation, maintenance, and repair services for commercial and industrial refrigeration, air conditioning, and ventilation systems.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <h3>Domestic Repairs & Installation</h3>
+                    <p>Reliable home services including appliance repairs, installations, and maintenance with prompt response times and quality workmanship.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <h3>Supply of Bulk Refrigerant Gasses</h3>
+                    <p>Direct import and supply of high-quality refrigerant gases from China, ensuring competitive pricing and reliable delivery.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1545152420-d7c3dbb0c8c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <h3>Rehabilitation of Roads & Environment</h3>
+                    <p>Comprehensive environmental restoration services including road rehabilitation and remediation of degraded environments.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <h3>Occupational Health & Safety Management</h3>
+                    <p>Development and implementation of robust OHS management systems to ensure workplace safety and regulatory compliance.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1563720223485-8d84f13a82c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <h3>Scania Engine & Gearbox Services</h3>
+                    <p>Specialized supply, repair, and maintenance services for Scania engines and gearboxes with genuine parts and expert technicians.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                    <h3>Comprehensive Risk Assessment</h3>
+                    <p>Thorough risk evaluation and management solutions tailored to your business needs, identifying potential hazards and implementing effective controls.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-		<source  src="video/mwanagu.mp4" type="video/mp4">
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <p><i>📍</i> Boksburg, Gauteng, South Africa</p>
+                        <p><i>📞</i> +27 11 123 4567</p>
+                        <p><i>✉️</i> info@clockwiserisk.co.za</p>
+                        <p><i>🕒</i> Mon-Fri: 8:00 AM - 5:00 PM</p>
+                    </div>
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">f</a>
+                        <a href="#" class="social-link" aria-label="Twitter">t</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                        <a href="#" class="social-link" aria-label="Instagram">ig</a>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14319.091235866083!2d28.22821936977538!3d-26.204999999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95198c1ce78c8b%3A0xee1e0eb0d0e2f0e1!2sBoksburg%2C%20South%20Africa!5e0!3m2!1sen!2sus!4v1648753456789!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	</video>
-	<p>
-	Singer: Jah Prayzer  Song: Chiramwiwa                  
-	</p>
-	<br>
-	<br>
-	
-		<br>
-		
-	
-	<video width="800" height="500" controls>
-		<source src="video/Takura - Zvemoyo (Official Video).mp4" type="video/mp4">
-		
-	</video>
-	<br>
-	Takura "Zvemoyo" this song is a killer, its explosive and heart touching.
-	<br>
-	<br>
-	<video width="800" height="500" controls>
-		<source src="video/Winky D-Dona (Official Audio).mp4" type="video/mp4">
-		
-	</video>
-	<br>
-	Winky D - "Dona"
-	<br>
-	<br>
-	<video width="800" height="500" controls>
-		<source src="video/Herman Chocoloco Lyrics 🎵.mp4" type="video/mp4">
-		
-	</video>
-	<br>
-	Herman "Chocoloco" This young man has great talent and a lot of potential.
-	<br>
-	<br>
-	<video width="800" height="500" controls>
-		<source src="video/Herman Chokoloco Coming Soon video dir by Zorodzai Chibuwe.mp4" type="video/mp4">
-	</video><br>
-	Herman - "Chocoloco" This was a Trail feature that introduced Herman on the market.
-	<br>
-	<br>
-	<video width="800" height="500" controls>
-		<source src="video/Holy Ten - Mwana Ndakubirai _ NASH NATION VIBES.mp4" type="video/mp4">
-	</video>
-	<br>
-	Holy Ten "Mwana Ndakubirai"
-	<br>
-	
-	<br>
-	<br>
-	<video width="800" height="500" controls>
-		<source src="video/people.mp4" type="video/mp4">
-	</video><br>
-	<br>
-	Singer: Libianca  Title: People.
-	<br>	
-	<br>
-	<video width="800" height="500" controls>
-		<source src="video/hezvo.mp4" type="video/mp4">
-	</video>
-	<br>
-	<br>
-	Singer: Ayra Star  Song: Rush
-	<br>
-	<br>
-		
-	
-	<br>
-	<br>
-	<video width="800" height="500" controls>
-		<source src="video/america.mp4" type="video/mp4">
-	</video><br>
-	<p>Jesus has done me well yoooh</p><br>
-		
-	<br>
-	<br>
-<footer>
-	&copy; wixy beats by Bethel Gurure 2023<br> <small>website by Bothwell Gurure Global Websites bothwell.gurure11@gmail.com</small>
-	
-</footer>
+    <!-- Animation Characters -->
+    <section class="animation-area">
+        <div class="character"></div>
+        <div class="character"></div>
+        <div class="character"></div>
+    </section>
 
-</div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Clockwise Risk Assessment</h3>
+                <p>Over 15 years of excellence in industrial services and risk management.</p>
+                <p>Based in Boksburg, serving clients nationwide.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <a href="#services">Refrigeration & Aircon</a>
+                <a href="#services">Risk Assessment</a>
+                <a href="#services">Environmental Rehabilitation</a>
+                <a href="#services">Scania Engine Services</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Clockwise Risk Assessment Pty Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        // Slideshow Functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slide-dot');
+        const slideCount = slides.length;
+
+        function showSlide(n) {
+            // Hide all slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Remove active class from all dots
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Show the selected slide
+            currentSlide = (n + slideCount) % slideCount;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        // Auto-advance slides
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+
+        // Add click events to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a, .footer-column a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    // Close mobile menu if open
+                    if (navMenu.classList.contains('show')) {
+                        navMenu.classList.remove('show');
+                    }
+                }
+            });
+        });
+
+        // Add loading animation to service cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards for animation
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
