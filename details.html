@@ -1,150 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Gallery | Clockwise Risk Assessment</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --accent:#1e3d59;
+      --bg:#f9fafc;
+      --text:#222;
+      --nav-bg: rgba(255,255,255,0.7);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Poppins",system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:var(--bg);
+      color:var(--text);
+      display:flex;
+      min-height:100vh;
+      flex-direction:column;
+      align-items:stretch;
     }
 
-    body {
-      font-family: "Poppins", sans-serif;
-      background: #f9fafc;
-      color: #333;
-      text-align: center;
+    header{
+      background:var(--accent);
+      color:#fff;
+      padding:1.75rem 1rem;
+      text-align:center;
+    }
+    header h1{margin:0;font-size:1.8rem;letter-spacing:0.2px}
+    header p{margin-top:.25rem;opacity:.95}
+
+    /* Slider container */
+    .slider-wrap{
+      max-width:1100px;
+      margin:2rem auto;
+      position:relative;
+      padding:1rem;
     }
 
-    header {
-      background: #1e3d59;
-      color: white;
-      padding: 2rem 1rem;
+    .slider{
+      overflow:hidden;
+      border-radius:14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      background:linear-gradient(180deg, #fff 0%, #fbfdff 100%);
+      position:relative;
     }
 
-    header h1 {
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
+    /* slides: flex - each slide is 100% of viewport of slider */
+    .slides{
+      display:flex;
+      transition:transform 600ms cubic-bezier(.22,.9,.31,1);
+      will-change:transform;
+    }
+    .slide{
+      flex:0 0 100%;
+      min-height:380px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+    .slide img{
+      width:100%;
+      height:420px;
+      object-fit:cover;
+      display:block;
     }
 
-    header p {
-      font-size: 1rem;
-      opacity: 0.85;
+    /* overlay text (optional) */
+    .caption{
+      position:absolute;
+      left:20px;
+      bottom:18px;
+      background: rgba(0,0,0,0.4);
+      color:#fff;
+      padding:.6rem .9rem;
+      border-radius:8px;
+      font-weight:600;
+      backdrop-filter: blur(4px);
     }
 
-    .slider {
-      width: 100%;
-      max-width: 900px;
-      height: 500px;
-      margin: 2rem auto;
-      overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      position: relative;
+    /* controls */
+    .btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:var(--nav-bg);
+      border:none;
+      padding:.6rem .75rem;
+      border-radius:8px;
+      cursor:pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:.4rem;
+      transition:transform .12s ease, background .12s;
+      backdrop-filter: blur(6px);
+    }
+    .btn:hover{transform:translateY(-50%) scale(1.03)}
+    .btn:active{transform:translateY(-50%) scale(.98)}
+    .prev{left:12px}
+    .next{right:12px}
+
+    .btn svg{width:18px;height:18px;display:block;fill:var(--accent)}
+
+    /* dots */
+    .dots{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:12px;
+      display:flex;
+      gap:.5rem;
+      z-index:10;
+      padding:.25rem .5rem;
+      border-radius:999px;
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(6px);
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;background:rgba(30,61,89,0.25);
+      cursor:pointer;transition:transform .15s, background .15s;
+    }
+    .dot.active{background:var(--accent); transform:scale(1.15)}
+
+    /* about section & footer */
+    .about{
+      max-width:980px;
+      margin:1.75rem auto;
+      padding:0 1rem 2rem;
+      line-height:1.6;
+    }
+    .about h2{color:var(--accent);margin-bottom:.5rem}
+    footer{
+      margin-top:auto;
+      background:var(--accent);
+      color:#fff;
+      text-align:center;
+      padding:.9rem 1rem;
+      font-size:.9rem;
     }
 
-    .slides {
-      display: flex;
-      width: 600%;
-      animation: slide 18s infinite;
+    /* responsive */
+    @media (max-width:900px){
+      .slide img{height:340px}
+      .btn{padding:.45rem}
+      .caption{left:12px;bottom:12px;font-size:.95rem}
     }
-
-    .slides img {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-    }
-
-    @keyframes slide {
-      0% { transform: translateX(0); }
-      16% { transform: translateX(0); }
-      20% { transform: translateX(-100%); }
-      36% { transform: translateX(-100%); }
-      40% { transform: translateX(-200%); }
-      56% { transform: translateX(-200%); }
-      60% { transform: translateX(-300%); }
-      76% { transform: translateX(-300%); }
-      80% { transform: translateX(-400%); }
-      96% { transform: translateX(-400%); }
-      100% { transform: translateX(-500%); }
-    }
-
-    .about {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      line-height: 1.6;
-    }
-
-    .about h2 {
-      margin-bottom: 1rem;
-      color: #1e3d59;
-    }
-
-    footer {
-      background: #1e3d59;
-      color: white;
-      padding: 1rem;
-      font-size: 0.9rem;
-      margin-top: 2rem;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .slider {
-        height: 300px;
-      }
-
-      .slides img {
-        height: 300px;
-      }
-
-      header h1 {
-        font-size: 1.6rem;
-      }
+    @media (max-width:560px){
+      header h1{font-size:1.25rem}
+      .slide img{height:230px}
+      .dots{bottom:8px}
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Clockwise Risk Assessment</h1>
-    <p>Refrigeration | Risk Assessment | Road & Environmental Maintenance</p>
+    <p>Refrigeration · Risk Assessment · Road & Environmental Maintenance</p>
   </header>
 
-  <section class="slider">
-    <div class="slides">
-      <!-- Replace these image paths with your actual images -->
-      <img src="images/can.jpg" alt="Refrigeration Work">
-      <img src="images/can1.jpg" alt="Risk Assessment">
-      <img src="images/can2.jpg" alt="Road Maintenance">
-      <img src="images/can3.jpg" alt="Environmental Work">
-      <img src="images/can4.jpg" alt="Our Team at Work">
-      <img src="images/nzira.jpg" alt="Safety Compliance">
+  <main class="slider-wrap">
+    <div class="slider" id="slider">
+      <div class="slides" id="slides">
+        <!-- Replace these with your real image paths -->
+        <div class="slide">
+          <img src="images/can.jpg" alt="Refrigeration Work">
+          <div class="caption">Refrigeration Systems</div>
+        </div>
+        <div class="slide">
+          <img src="images/can1.jpg" alt="Risk Assessment">
+          <div class="caption">Comprehensive Risk Assessment</div>
+        </div>
+        <div class="slide">
+          <img src="images/can2.jpg" alt="Road Maintenance">
+          <div class="caption">Road Maintenance & Repairs</div>
+        </div>
+        <div class="slide">
+          <img src="images/can3.jpg" alt="Environmental Work">
+          <div class="caption">Environmental Degradation Maintenance</div>
+        </div>
+        <div class="slide">
+          <img src="images/can4.jpg" alt="Our Team">
+          <div class="caption">Our Team at Work</div>
+        </div>
+        <div class="slide">
+          <img src="images/gas(2).jpg" alt="Safety Compliance">
+          <div class="caption">Safety & Compliance</div>
+        </div>
+      </div>
+
+      <button class="btn prev" id="prevBtn" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </button>
+      <button class="btn next" id="nextBtn" aria-label="Next slide">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+      </button>
+
+      <div class="dots" id="dots" aria-hidden="false"></div>
     </div>
-  </section>
+  </main>
 
   <section class="about">
     <h2>About Clockwise Risk Assessment</h2>
     <p>
-      Clockwise Risk Assessment specializes in refrigeration systems, comprehensive risk assessments, 
-      and sustainable road and environmental degradation maintenance. We are dedicated to promoting 
-      safety, operational reliability, and environmentally responsible practices. Our professional team 
-      ensures that every project is executed with precision, compliance, and care for the environment.
+      Clockwise Risk Assessment specialises in refrigeration systems, detailed risk assessments,
+      and road & environmental degradation maintenance. We provide professional, safety-focused
+      solutions to reduce downtime, improve compliance and support sustainable operations.
     </p>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Clockwise Risk Assessment | All Rights Reserved</p>
-  </footer>
+  <footer>&copy; 2025 Clockwise Risk Assessment — All rights reserved</footer>
 
   <script>
-    // Optional: Pause the auto slider when hovering over the images
-    const slider = document.querySelector('.slides');
-    slider.addEventListener('mouseover', () => slider.style.animationPlayState = 'paused');
-    slider.addEventListener('mouseout', () => slider.style.animationPlayState = 'running');
+    (function(){
+      const slidesEl = document.getElementById('slides');
+      const sliderEl  = document.getElementById('slider');
+      const prevBtn   = document.getElementById('prevBtn');
+      const nextBtn   = document.getElementById('nextBtn');
+      const dotsEl    = document.getElementById('dots');
+
+      const slides = Array.from(slidesEl.children);
+      const count  = slides.length;
+      let index    = 0;
+      let interval = null;
+      const AUTOPLAY_MS = 3000;
+
+      // Build dots
+      const dots = [];
+      for(let i=0;i<count;i++){
+        const d = document.createElement('button');
+        d.className = 'dot';
+        d.setAttribute('aria-label', 'Go to slide ' + (i+1));
+        d.addEventListener('click', ()=> { goTo(i); restartAutoplay(); });
+        dotsEl.appendChild(d);
+        dots.push(d);
+      }
+
+      function updateDots(){
+        dots.forEach((d,i)=> d.classList.toggle('active', i===index));
+      }
+
+      function goTo(i){
+        if(i < 0) i = count - 1;
+        if(i >= count) i = 0;
+        index = i;
+        slidesEl.style.transform = `translateX(-${index * 100}%)`;
+        updateDots();
+      }
+
+      function next(){
+        goTo(index + 1);
+      }
+      function prev(){
+        goTo(index - 1);
+      }
+
+      // autoplay
+      function startAutoplay(){
+        if(interval) return;
+        interval = setInterval(next, AUTOPLAY_MS);
+      }
+      function stopAutoplay(){
+        if(interval){ clearInterval(interval); interval = null; }
+      }
+      function restartAutoplay(){
+        stopAutoplay();
+        startAutoplay();
+      }
+
+      // attach events
+      nextBtn.addEventListener('click', ()=> { next(); restartAutoplay(); });
+      prevBtn.addEventListener('click', ()=> { prev(); restartAutoplay(); });
+
+      // pause on hover/focus for accessibility
+      sliderEl.addEventListener('mouseenter', stopAutoplay);
+      sliderEl.addEventListener('mouseleave', startAutoplay);
+      sliderEl.addEventListener('focusin', stopAutoplay);
+      sliderEl.addEventListener('focusout', startAutoplay);
+
+      // keyboard navigation
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowLeft') { prev(); restartAutoplay(); }
+        if(e.key === 'ArrowRight'){ next(); restartAutoplay(); }
+      });
+
+      // touch support: basic swipe
+      let startX = 0, deltaX = 0, touching = false;
+      sliderEl.addEventListener('touchstart', (e)=>{
+        stopAutoplay();
+        touching = true;
+        startX = e.touches[0].clientX;
+        slidesEl.style.transition = 'none';
+      }, {passive:true});
+
+      sliderEl.addEventListener('touchmove', (e)=>{
+        if(!touching) return;
+        deltaX = e.touches[0].clientX - startX;
+        // move slides proportionally to finger
+        slidesEl.style.transform = `translateX(calc(-${index * 100}% + ${deltaX}px))`;
+      }, {passive:true});
+
+      sliderEl.addEventListener('touchend', ()=>{
+        touching = false;
+        slidesEl.style.transition = ''; // restore CSS transition
+        if(Math.abs(deltaX) > 60){
+          if(deltaX < 0) next(); else prev();
+        } else {
+          goTo(index); // snap back
+        }
+        deltaX = 0;
+        startAutoplay();
+      });
+
+      // Prevent image dragging
+      slides.forEach(s=>{
+        const img = s.querySelector('img');
+        if(img) img.setAttribute('draggable', 'false');
+      });
+
+      // init
+      goTo(0);
+      startAutoplay();
+
+      // helpful: resize observer to ensure correct snapping if container changes
+      new ResizeObserver(()=> goTo(index)).observe(sliderEl);
+    })();
   </script>
 </body>
 </html>
-
